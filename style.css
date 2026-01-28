@@ -1,0 +1,674 @@
+/* === Font Import for Vintage Logo === */
+@font-face {
+  font-family: "Veneer";
+  src: url("./Veneer.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* === CSS Variables: Global Colors === */
+:root {
+  --sienna: #b1560e;
+  --sienna-2: #92633a;
+  --white: #ffffff;
+  --black: #000000;
+  --tan: #c19f7a;
+  --papaya-whip: #eae0c7;
+}
+
+/* === Global Reset === */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* === Body Styling === */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: var(--papaya-whip);
+  color: var(--black);
+}
+
+/* === Header Bar === */
+header {
+  position: sticky; /* sticks to top on scroll */
+  top: 0;
+  z-index: 999;
+  background-color: var(--papaya-whip);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Bottom border animation (controlled via JS) */
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: var(--border-width);
+  background-color: var(--tan);
+}
+
+/* Header content layout */
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo Text */
+.logo {
+  font-family: "Veneer", serif;
+  font-weight: 100;
+  font-size: 2.5rem;
+  color: var(--sienna);
+  letter-spacing: 1px;
+}
+
+/* Desktop Nav Menu */
+nav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+/* Nav Link Styling */
+nav a {
+  font-weight: bold;
+  color: var(--sienna);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--black);
+}
+
+/* Hamburger Icon (hidden by default) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 26px;
+  height: 3px;
+  background: var(--black);
+}
+
+/* Mobile Nav Menu */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: var(--sienna);
+  padding: 1rem 2rem;
+  border-top: 1px solid var(--tan);
+}
+
+.mobile-nav a {
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  color: var(--papaya-whip);
+  text-decoration: none;
+}
+
+.mobile-nav a:hover {
+  color: var(--sienna);
+}
+
+/* === Main Content Wrapper === */
+main {
+  padding-left: 103px; /* space for fixed social sidebar */
+  position: relative;
+}
+
+/* === Vertical Social Media Sidebar === */
+.social-sidebar {
+  position: absolute;
+  width: 103px;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  margin: 0 auto;
+  padding: 2rem;
+  height: 100%;
+  background-color: var(--papaya-whip);
+}
+
+/* Sidebar right border animation */
+.social-sidebar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: var(--border-height);
+  width: 1px;
+  background-color: var(--tan);
+}
+
+/* Sticky icon stack */
+.social-sidebar nav {
+  position: sticky;
+  top: 8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual Social Icons */
+.social-sidebar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--sienna);
+  border-radius: 50%;
+  background-color: var(--papaya-whip);
+  color: var(--sienna);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.social-sidebar a:hover {
+  background-color: var(--sienna);
+  color: var(--papaya-whip);
+}
+
+.social-sidebar svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* === Responsive Sidebar Behavior for Mobile === */
+@media (max-width: 768px) {
+  main {
+    padding-left: 0;
+  }
+
+  .social-sidebar {
+    position: sticky;
+    top: unset;
+    padding: 1rem;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+  }
+
+  .social-sidebar nav {
+    position: relative;
+    top: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .social-sidebar::after {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+/* === Footer Section === */
+footer {
+  background: var(--sienna-2);
+  color: var(--white);
+  padding: 3rem 2rem;
+  min-height: 50vh;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo inside footer */
+.footer-logo {
+  font-family: "Veneer", serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+/* Link and Contact Groups */
+.footer-links,
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a,
+.footer-contact a {
+  color: var(--papaya-whip);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: var(--tan);
+}
+
+/* === Responsive Header Behavior === */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav.show {
+    display: flex;
+  }
+}
+
+/* === Hero Section === */
+.hero {
+  position: relative;
+  min-height: calc(50rem - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--papaya-whip);
+  background-size: cover;
+  padding: 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Big Heading Animation Target */
+.hero-content h1 {
+  font-family: "Veneer", serif;
+  font-weight: 100;
+  font-size: clamp(8rem, 16vw, 12rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0.5rem 0;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--sienna);
+  opacity: 0;
+}
+
+.hero-content .line {
+  display: block;
+}
+
+/* Bottle wrapper for scroll animation */
+.hero-bottle-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 45rem;
+  width: 100%;
+  z-index: 4;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Actual bottle image */
+.hero-bottle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+  filter: drop-shadow(8px 8px 12px rgba(0, 0, 0, 0.15));
+  transform: rotate(20deg);
+  transition: filter 0.3s ease;
+}
+
+/* Hero stamp image animation target */
+.hero-stamp {
+  position: absolute;
+  left: 35%;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  transform: translate(-50%, -50%) rotate(-20deg) scale(100);
+  opacity: 0;
+  max-width: 150px;
+  filter: brightness(0.5);
+}
+
+/* === Responsive Hero Section === */
+@media (max-width: 768px) {
+  .hero {
+    min-height: calc(30rem - 80px);
+  }
+
+  .hero-bottle-wrapper {
+    height: 25rem;
+  }
+
+  .hero-stamp {
+    max-width: 100px;
+  }
+
+  .hero-content h1 {
+    font-size: 15vw;
+  }
+}
+
+/* === Intro Section (below hero) === */
+.section-intro {
+  background-color: var(--papaya-whip);
+  border-top: 1px solid var(--tan);
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* === Intro Section Grid Layout === */
+.intro-grid {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  justify-content: space-between;
+}
+
+/* Left and Right Columns in Intro Section */
+.intro-left,
+.intro-right {
+  max-width: 30%;
+}
+
+/* Section Label Above Main Heading */
+.small-title {
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--sienna-2);
+  margin-bottom: 1rem;
+}
+
+/* Main Heading: Heritage Line */
+.main-heading {
+  font-family: "Veneer", serif;
+  font-weight: 100;
+  font-size: 4.5rem;
+  line-height: 1.2;
+  color: var(--sienna);
+  margin-bottom: 1.5rem;
+}
+
+/* Intro Paragraph Description */
+.description {
+  font-size: 1.05rem;
+  color: var(--black);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Call-to-Action Button */
+.cta-box {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--sienna);
+  background-color: var(--sienna);
+  color: var(--papaya-whip);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-box:hover {
+  background-color: var(--papaya-whip);
+  color: var(--sienna);
+}
+
+/* === Responsive Intro Section === */
+@media (max-width: 768px) {
+  .intro-grid {
+    text-align: center;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .intro-left,
+  .intro-right {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .intro-left {
+    padding-right: 0;
+  }
+
+  .main-heading {
+    font-size: 2.5rem;
+  }
+}
+
+/* === Ingredients Log Container === */
+.ingredients-log {
+  background: transparent;
+  padding: 1rem 0;
+}
+
+/* Ingredients Section Title */
+.ingredients-title {
+  font-family: "Veneer", serif;
+  font-size: 1.75rem;
+  color: var(--sienna);
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+/* Single Ingredient Entry Layout */
+.ingredient-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Quantity Value (e.g. 500ml) */
+.ingredient-qty {
+  font-family: "Veneer", serif;
+  font-size: 2.5rem;
+  color: var(--sienna-2);
+  min-width: 90px;
+  text-align: left;
+  line-height: 1;
+}
+
+/* Textual Description of Ingredient */
+.ingredient-text {
+  max-width: 400px;
+}
+
+.ingredient-text strong {
+  font-family: "Veneer", serif;
+  font-size: 1.2rem;
+  color: var(--sienna);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.ingredient-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--black);
+  margin: 0;
+}
+
+/* === Responsive Ingredients Layout === */
+@media (max-width: 768px) {
+  .ingredient-item {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .ingredient-qty {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .ingredient-text {
+    max-width: 100%;
+  }
+
+  .ingredients-title {
+    text-align: center;
+    font-size: 2.5rem;
+  }
+}
+
+/* === Timeline Section === */
+.timeline-section {
+  padding: 6rem 0rem 3rem;
+  border-top: 1px solid var(--tan);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each Timeline Entry Block */
+.timeline-entry {
+  margin: 0;
+  padding: 0 2rem 0;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  min-height: 600px;
+  max-width: 70%;
+}
+
+/* Alternate Entry Layout (odd/even) */
+.timeline-entry:nth-child(odd) {
+  margin-left: auto;
+}
+
+.timeline-entry:nth-child(odd) .timeline-left {
+  order: 2;
+}
+
+.timeline-entry:nth-child(odd) .timeline-right {
+  order: 1;
+}
+
+.timeline-entry:nth-child(even) {
+  margin-right: auto;
+}
+
+.timeline-entry:last-child {
+  margin-bottom: 0rem;
+}
+
+/* Main Section Title (Big Year Heading) */
+.timeline-main-title {
+  padding: 0 2rem 0rem;
+  font-weight: 100;
+  font-family: "Veneer", serif;
+  font-size: 10rem;
+  line-height: 1.2;
+  color: var(--sienna);
+  margin-bottom: 2.5rem;
+}
+
+/* Left Side of Timeline: Year + Image */
+.timeline-left {
+  flex: 0 0 300px;
+  text-align: center;
+}
+
+.timeline-date {
+  font-family: "Veneer", serif;
+  font-size: 4rem;
+  color: var(--sienna);
+  line-height: 1;
+  transform: translateY(30px); /* initial offset for animation */
+}
+
+.timeline-img {
+  width: 100%;
+  max-width: 240px;
+  border: 3px solid var(--sienna-2);
+  padding: 0.5rem;
+  background-color: var(--papaya-whip);
+  box-shadow: 4px 4px 0 var(--sienna);
+}
+
+/* Right Side of Timeline: Text Content */
+.timeline-right {
+  flex: 1;
+  max-width: 400px;
+}
+
+.timeline-title {
+  font-family: "Veneer", serif;
+  font-size: 2rem;
+  color: var(--sienna-2);
+  margin-bottom: 1rem;
+}
+
+.timeline-description {
+  font-size: 1.05rem;
+  color: var(--black);
+  line-height: 1.6;
+}
+
+/* === Responsive Timeline Section === */
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: 3rem 0rem 3rem;
+  }
+
+  .timeline-main-title {
+    font-size: 4rem;
+    text-align: center;
+  }
+
+  .timeline-entry {
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto 2rem;
+    gap: 1rem;
+    max-width: 100%;
+    min-height: unset;
+  }
+
+  .timeline-left {
+    margin-bottom: 2rem;
+  }
+
+  .timeline-title {
+    font-size: 1.5rem;
+  }
+
+  .timeline-date {
+    font-size: 3rem;
+  }
+
+  .timeline-entry:nth-child(odd) .timeline-right {
+    order: 2;
+  }
+}
